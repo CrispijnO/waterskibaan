@@ -1,0 +1,9 @@
+C:\Users\crisp\source\repos\waterskibaan\groenscherm\obj\Debug\groenscherm.Properties.Resources.resources
+C:\Users\crisp\source\repos\waterskibaan\groenscherm\obj\Debug\groenscherm.csproj.GenerateResource.cache
+C:\Users\crisp\source\repos\waterskibaan\groenscherm\obj\Debug\groenscherm.csproj.CoreCompileInputs.cache
+C:\Users\crisp\source\repos\waterskibaan\groenscherm\bin\Debug\groenscherm.exe.config
+C:\Users\crisp\source\repos\waterskibaan\groenscherm\bin\Debug\groenscherm.exe
+C:\Users\crisp\source\repos\waterskibaan\groenscherm\bin\Debug\groenscherm.pdb
+C:\Users\crisp\source\repos\waterskibaan\groenscherm\obj\Debug\groenscherm.exe
+C:\Users\crisp\source\repos\waterskibaan\groenscherm\obj\Debug\groenscherm.pdb
+C:\Users\crisp\source\repos\waterskibaan\groenscherm\obj\Debug\groenschermfrom.Form1.resources

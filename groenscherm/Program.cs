@@ -1,10 +1,11 @@
-﻿using System;
+﻿using groenschermfrom;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace waterskibaan
+namespace groenscherm
 {
     static class Program
     {
@@ -16,7 +17,7 @@ namespace waterskibaan
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form2());
+            Application.Run(new Form1());
         }
     }
 }
