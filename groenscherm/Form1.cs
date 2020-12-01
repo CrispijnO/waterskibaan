@@ -17,13 +17,7 @@ namespace groenschermfrom
             InitializeComponent();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            ///panel1.Visible = !panel1.Visible;
-            string firstName = "John";
-            string lastName = "de Boer";
-            nameOutput.Text = "Welkom " + firstName + " " + lastName; 
-        }
+
 
         private void pictureBox1_LoadCompleted(object sender, AsyncCompletedEventArgs e)
         {
