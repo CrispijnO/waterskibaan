@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,9 @@ namespace groenschermfrom
 {
     public partial class Form1 : Form
     {
+        DateTime startTime;
+        DateTime endTime;
+
         public Form1()
         {
             InitializeComponent();
@@ -22,7 +26,11 @@ namespace groenschermfrom
             ///panel1.Visible = !panel1.Visible;
             string firstName = "John";
             string lastName = "de Boer";
-            nameOutput.Text = "Welkom " + firstName + " " + lastName; 
+            nameOutput.Text = "Welkom " + firstName + " " + lastName;
+            nameOutput.BackColor = Color.Red;
+            this.startTime = DateTime.Now;
+            this.endTime = startTime.AddHours(1);
+            labelTime.Text = "van " + startTime.Hour + ":" + startTime.Minute + " tot " + endTime.Hour + ":" + endTime.Minute;
         }
 
         private void pictureBox1_LoadCompleted(object sender, AsyncCompletedEventArgs e)
@@ -41,6 +49,11 @@ namespace groenschermfrom
         }
 
         private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelTime_Click(object sender, EventArgs e)
         {
 
         }
