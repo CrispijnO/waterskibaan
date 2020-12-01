@@ -27,14 +27,7 @@ namespace waterskibaan
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            scanScherm.Visible = !scanScherm.Visible;
-        }
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-            ///panel1.Visible = !panel1.Visible;
-            string firstName = "John";
-            string lastName = "de Boer";
-            nameOutput.Text = "Welkom " + firstName + " " + lastName;
+            panel1.Visible = !panel1.Visible;
         }
 
         private void getReaders()
