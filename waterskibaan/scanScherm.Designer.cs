@@ -33,12 +33,12 @@ namespace waterskibaan
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.roundPictureBox1 = new RoundPictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.roundPictureBox1 = new RoundPictureBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.roundPictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -64,10 +64,22 @@ namespace waterskibaan
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(454, 135);
+            this.textBox1.Location = new System.Drawing.Point(459, 113);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(200, 20);
             this.textBox1.TabIndex = 6;
+            // 
+            // roundPictureBox1
+            // 
+            this.roundPictureBox1.BackColor = System.Drawing.Color.DarkGray;
+            this.roundPictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("roundPictureBox1.Image")));
+            this.roundPictureBox1.Location = new System.Drawing.Point(-47, 126);
+            this.roundPictureBox1.Name = "roundPictureBox1";
+            this.roundPictureBox1.Size = new System.Drawing.Size(267, 277);
+            this.roundPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.roundPictureBox1.TabIndex = 5;
+            this.roundPictureBox1.TabStop = false;
+            this.roundPictureBox1.Click += new System.EventHandler(this.roundPictureBox1_Click);
             // 
             // label1
             // 
@@ -93,18 +105,7 @@ namespace waterskibaan
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
-            // roundPictureBox1
-            // 
-            this.roundPictureBox1.BackColor = System.Drawing.Color.DarkGray;
-            this.roundPictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("roundPictureBox1.Image")));
-            this.roundPictureBox1.Location = new System.Drawing.Point(-47, 126);
-            this.roundPictureBox1.Name = "roundPictureBox1";
-            this.roundPictureBox1.Size = new System.Drawing.Size(267, 277);
-            this.roundPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.roundPictureBox1.TabIndex = 5;
-            this.roundPictureBox1.TabStop = false;
-            // 
-            // Form2
+            // scanScherm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -114,12 +115,12 @@ namespace waterskibaan
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "Form2";
+            this.Name = "scanScherm";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.roundPictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

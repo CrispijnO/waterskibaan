@@ -32,9 +32,16 @@ namespace waterskibaan
 
         private void getReaders()
         {
+
             try
             {
+                textBox1.AppendText("test");
+
                 string[] readers = SCARD.Readers;
+                if (readers.Length == 0)
+                {
+                    textBox1.AppendText("Geen readers");
+                }
                 foreach (string reader in readers)
                 {
                     textBox1.AppendText(reader + " yes");
@@ -42,10 +49,15 @@ namespace waterskibaan
             }
             catch (Exception)
             {
-                textBox1.AppendText("geen readers");
+                textBox1.AppendText("Error");
             }
 
             ///SCARD.Connect();
+        }
+
+        private void roundPictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
