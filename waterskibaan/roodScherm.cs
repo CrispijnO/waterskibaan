@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace waterskibaan
+namespace groenschermfrom
 {
     public partial class roodScherm : Form
     {
@@ -19,7 +19,8 @@ namespace waterskibaan
 
         private void roodScherm_Load(object sender, EventArgs e)
         {
-
+            Form1 Form1 = new Form1();
+            Form1.Show();
         }
     }
 }
