@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace waterskibaan
+namespace groenschermfrom
 {
-    class tijd
+    public class tijd
     {
         public DateTime bookingStart;
         public DateTime bookingEnd;
+
        
         public void timer()
         {
@@ -18,7 +19,7 @@ namespace waterskibaan
             bookingStart = dateNow;
             bookingEnd = dateThen;
         }
-        public int get_time_left() 
+        public static int get_time_left() 
         {
             DateTime dateNow = DateTime.Now;
             DateTime dateThen = dateNow.AddHours(1);

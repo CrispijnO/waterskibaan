@@ -11,7 +11,7 @@ using SpringCard.PCSC;
 using SpringCard.LibCs;
 using SpringCard.PCSC.CardLibraries;
 
-namespace waterskibaan
+namespace groenschermfrom
 {
     public partial class scanScherm : Form
     {

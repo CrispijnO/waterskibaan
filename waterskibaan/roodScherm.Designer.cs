@@ -7,7 +7,7 @@ using System.Net;
 using System.IO;
 using System.Drawing;
 
-namespace waterskibaan
+namespace groenschermfrom
 {
     partial class roodScherm
     {

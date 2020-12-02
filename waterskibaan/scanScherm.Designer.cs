@@ -1,5 +1,5 @@
 ﻿
-namespace waterskibaan
+namespace groenschermfrom
 {
     partial class scanScherm
     {

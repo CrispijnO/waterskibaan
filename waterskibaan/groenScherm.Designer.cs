@@ -33,6 +33,7 @@ namespace groenschermfrom
             this.nameOutput = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.labelTime = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -51,6 +52,7 @@ namespace groenschermfrom
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.labelTime);
             this.panel1.Controls.Add(this.nameOutput);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Location = new System.Drawing.Point(1, -4);
@@ -63,12 +65,20 @@ namespace groenschermfrom
             // 
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(-3, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(-6, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(604, 371);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // labelTime
+            // 
+            this.labelTime.BackColor = System.Drawing.Color.Lime;
+            this.labelTime.Location = new System.Drawing.Point(129, 92);
+            this.labelTime.Name = "labelTime";
+            this.labelTime.Size = new System.Drawing.Size(313, 23);
+            this.labelTime.TabIndex = 3;
             // 
             // Form1
             // 
@@ -91,6 +101,7 @@ namespace groenschermfrom
         private System.Windows.Forms.Label nameOutput;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label labelTime;
     }
 }
 

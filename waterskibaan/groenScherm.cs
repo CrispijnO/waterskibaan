@@ -19,10 +19,12 @@ namespace groenschermfrom
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+            int timeLeft = tijd.get_time_left();
             ///panel1.Visible = !panel1.Visible;
             string firstName = "John";
             string lastName = "de Boer";
-            nameOutput.Text = "Welkom " + firstName + " " + lastName; 
+            nameOutput.Text = "Welkom " + firstName + " " + lastName;
+            labelTime.Text = "time left: " + timeLeft.ToString() + " min";
         }
 
         private void pictureBox1_LoadCompleted(object sender, AsyncCompletedEventArgs e)
