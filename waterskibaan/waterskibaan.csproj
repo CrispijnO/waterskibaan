@@ -36,18 +36,6 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="SpringCard.LibCs, Version=19.8.7198.26873, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\SpringCard.LibCs.dll</HintPath>
-    </Reference>
-    <Reference Include="SpringCard.PCSC, Version=19.6.7221.15266, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\SpringCard.PCSC.dll</HintPath>
-    </Reference>
-    <Reference Include="SpringCard.PCSC.CardLibraries, Version=17.4.7221.15269, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\SpringCard.PCSC.CardLibraries.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -80,9 +68,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RoundPictureBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="tijd.cs" />
     <Compile Include="User.cs" />
     <Compile Include="UserData.cs" />
@@ -114,11 +99,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="SpringCard.LibCs.dll" />
-    <Content Include="SpringCard.PCSC.CardLibraries.dll" />
-    <Content Include="SpringCard.PCSC.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
