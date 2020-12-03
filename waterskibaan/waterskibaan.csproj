@@ -65,7 +65,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APIHelper.cs" />
+    <Compile Include="ApiModel.cs" />
     <Compile Include="ApiProcessor.cs" />
+    <Compile Include="boekingenModel.cs" />
     <Compile Include="bracelet.cs" />
     <Compile Include="groenScherm.cs">
       <SubType>Form</SubType>
@@ -73,6 +75,7 @@
     <Compile Include="groenScherm.Designer.cs">
       <DependentUpon>groenScherm.cs</DependentUpon>
     </Compile>
+    <Compile Include="RestClient.cs" />
     <Compile Include="roodScherm.cs">
       <SubType>Form</SubType>
     </Compile>
