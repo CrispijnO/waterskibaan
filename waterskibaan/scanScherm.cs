@@ -28,6 +28,9 @@ namespace groenschermfrom
         private void button1_Click(object sender, EventArgs e)
         {
             panel1.Visible = !panel1.Visible;
+           // bracelet.braceletCode = > apicall <
+           // string name = User.FirstName + " " + User.LastName;
+           // textBox1.Text = name;
         }
 
         private void getReaders()

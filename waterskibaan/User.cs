@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace groenschermfrom
 {
-    public class User
+    public static class User
     {
-        public string FirstName { get; set; }
+        public static string FirstName { get; set; }
 
-        public string LastName  { get; set; }
+        public static string LastName  { get; set; }
     }
 }
