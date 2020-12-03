@@ -6,6 +6,8 @@ using System.Web;
 using System.Net;
 using System.IO;
 using System.Drawing;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace groenschermfrom
 {
@@ -15,8 +17,6 @@ namespace groenschermfrom
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-        private const string API_URL = "https://demo.recras.nl/api2/";
-        private const string API_KEY = "Bearer swMkaP-zCQNxEcEHzuVDzfUPdAzQ5ii5";
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -40,6 +40,13 @@ namespace groenschermfrom
         /// </summary>
         private void InitializeComponent()
         {
+            RESTClient rClient = new RESTClient();
+            rClient.endPoint = "https://demo.recras.nl/api2/contacten/1";
+
+            string strResponse = rClient.makeRequest();
+            //boekingenModel boekingen = JsonConvert.DeserializeObject<boekingenModel>(strResponse);
+            //Console.Out.WriteLine(boekingen.Boekingen.Count);
+
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
@@ -76,7 +83,7 @@ namespace groenschermfrom
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(214, 129);
             this.richTextBox1.TabIndex = 1;
-            this.richTextBox1.Text = "some text need here";
+            this.richTextBox1.Text = strResponse;
             // 
             // label1
             // 
