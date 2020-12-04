@@ -35,18 +35,35 @@ namespace groenschermfrom
 
         #region Windows Form Designer generated code
 
+        class Todo
+        {
+            public int id { get; set; }
+            public int klant_id { get; set; }
+            public string datum { get; set; }
+        }
+
+
         /// <summary>
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
+        /// 
         private void InitializeComponent()
         {
             RESTClient rClient = new RESTClient();
-            rClient.endPoint = "https://demo.recras.nl/api2/contacten/1";
+            rClient.endPoint = "https://demo.recras.nl/api2/boekingen";
 
             string strResponse = rClient.makeRequest();
             //boekingenModel boekingen = JsonConvert.DeserializeObject<boekingenModel>(strResponse);
             //Console.Out.WriteLine(boekingen.Boekingen.Count);
+            List<Todo> todo = JsonConvert.DeserializeObject<List<Todo>>(strResponse);
+            string contentString = "";
+            foreach (var item in todo)
+            {
+                contentString += $"{item.id} : {item.klant_id} : {item.datum}\n";
+            }
+
+
 
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -84,7 +101,7 @@ namespace groenschermfrom
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(214, 129);
             this.richTextBox1.TabIndex = 1;
-            this.richTextBox1.Text = strResponse;
+            this.richTextBox1.Text = contentString;
             // 
             // label1
             // 
