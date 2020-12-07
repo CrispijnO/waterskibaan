@@ -38,8 +38,6 @@ namespace groenschermfrom
 
             try
             {
-                textBox1.AppendText("test");
-
                 string[] readers = SCARD.Readers;
                 if (readers.Length == 0)
                 {
@@ -47,7 +45,7 @@ namespace groenschermfrom
                 }
                 foreach (string reader in readers)
                 {
-                    textBox1.AppendText(reader + " yes");
+                    textBox1.AppendText(reader + " test");
                 }
             }
             catch (Exception)
@@ -56,11 +54,6 @@ namespace groenschermfrom
             }
 
             ///SCARD.Connect();
-        }
-
-        private void roundPictureBox1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

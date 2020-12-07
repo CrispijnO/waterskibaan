@@ -79,7 +79,6 @@ namespace groenschermfrom
             this.roundPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.roundPictureBox1.TabIndex = 5;
             this.roundPictureBox1.TabStop = false;
-            this.roundPictureBox1.Click += new System.EventHandler(this.roundPictureBox1_Click);
             // 
             // label1
             // 
