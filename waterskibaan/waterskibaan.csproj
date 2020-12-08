@@ -64,10 +64,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="APIHelper.cs" />
-    <Compile Include="ApiModel.cs" />
-    <Compile Include="ApiProcessor.cs" />
-    <Compile Include="boekingenModel.cs" />
     <Compile Include="bracelet.cs" />
     <Compile Include="groenScherm.cs">
       <SubType>Form</SubType>
