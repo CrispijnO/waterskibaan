@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="APIModels.cs" />
     <Compile Include="bracelet.cs" />
     <Compile Include="groenScherm.cs">
       <SubType>Form</SubType>
