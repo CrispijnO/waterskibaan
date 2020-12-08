@@ -51,13 +51,16 @@ namespace groenschermfrom
                 {
                     textBox1.AppendText(reader + " test");
                 }
+                ///SCARD.Connect();
+                ///SCARD.ListCards();
+                ///SCARD.ListReaders(textBox1.Text);
             }
             catch (Exception)
             {
-                textBox1.AppendText("Error");
+                textBox1.AppendText(SCARD.ErrorToMessage(0));
             }
 
-            ///SCARD.Connect();
+            
         }
     }
 }
