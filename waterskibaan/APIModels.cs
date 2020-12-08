@@ -35,6 +35,6 @@ namespace waterskibaan
     {
         public int id { get; set; }
         public int startmomentgroep_id { get; set; }
-        public int MyProperty { get; set; }
+        public string datetime { get; set; }
     }
 }
