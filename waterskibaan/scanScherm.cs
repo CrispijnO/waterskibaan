@@ -67,25 +67,34 @@ namespace groenschermfrom
 
         public void onCardChange(uint readerState, CardBuffer cardAtr)
         {
-            if (InvokeRequired)
+            if (cardAtr != null)
             {
-                this.BeginInvoke(new onCardChangeInvoker(onCardChange), readerState, cardAtr);
-                return;
-            }
-            channel = new SCardChannel(cardReader);
-            if(channel.Connect())
-            {
-                textBox1.Text = "Success";
-            }
-            CAPDU capdu = new CAPDU(0x00, 0x00, 0x00, 0x00);
-            
-            channel.Transmit(capdu);
-            RAPDU rapdu = channel.Transmit(capdu);
-            Console.WriteLine(rapdu);
+                if (InvokeRequired)
+                {
+                    this.BeginInvoke(new onCardChangeInvoker(onCardChange), readerState, cardAtr);
+                    return;
+                }
+                channel = new SCardChannel(cardReader);
+                if (!channel.Connect())
+                {
+                    return;
+                }
+                CAPDU capdu = new CAPDU(0xff, 0xca, 0x00, 0x00);
+                RAPDU rapdu = channel.Transmit(capdu);
+                if (rapdu.SW != 0x9000)
+                {
+                    textBox1.Text = "Get UID APDU failed!";
+                    return;
+                }
+                byte[] rapduB = rapdu.data.GetBytes();
+                string hexadecimalResult = BitConverter.ToString(rapduB);
+                textBox1.Text = hexadecimalResult;
 
-            
-            //textBox1.Text = rapdu.ToString();
-            ///SCARD.Connect(SCARD.PCI_RAW(), cardReader, 0x00000003, 0x00000002, Handle, ));
+                channel.Disconnect();
+                channel = null;
+                cardReader.StopMonitor();
+                ///SCARD.Connect(SCARD.PCI_RAW(), cardReader, 0x00000003, 0x00000002, Handle, ));
+            }
         }
     }
 }

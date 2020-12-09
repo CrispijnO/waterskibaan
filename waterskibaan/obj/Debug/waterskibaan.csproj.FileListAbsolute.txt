@@ -73,7 +73,6 @@ C:\Users\crisp\source\repos\waterskibaan\waterskibaan\bin\Debug\SpringCard.PCSC.
 C:\Users\crisp\source\repos\waterskibaan\waterskibaan\bin\Debug\System.Net.Http.Formatting.dll
 C:\Users\crisp\source\repos\waterskibaan\waterskibaan\bin\Debug\Newtonsoft.Json.xml
 C:\Users\crisp\source\repos\waterskibaan\waterskibaan\bin\Debug\System.Net.Http.Formatting.xml
-C:\Users\crisp\source\repos\waterskibaan\waterskibaan\obj\Debug\waterskibaan.csprojAssemblyReference.cache
 C:\Users\crisp\source\repos\waterskibaan\waterskibaan\obj\Debug\groenschermfrom.Form1.resources
 C:\Users\crisp\source\repos\waterskibaan\waterskibaan\obj\Debug\groenschermfrom.roodScherm.resources
 C:\Users\crisp\source\repos\waterskibaan\waterskibaan\obj\Debug\groenschermfrom.scanScherm.resources
@@ -103,3 +102,4 @@ D:\coding\school\project\waterskibaan-sneek\waterskibaan\waterskibaan\bin\Debug\
 D:\coding\school\project\waterskibaan-sneek\waterskibaan\waterskibaan\bin\Debug\Newtonsoft.Json.xml
 D:\coding\school\project\waterskibaan-sneek\waterskibaan\waterskibaan\bin\Debug\System.Net.Http.Formatting.xml
 D:\coding\school\project\waterskibaan-sneek\waterskibaan\waterskibaan\obj\Debug\waterskibaan.csproj.CopyComplete
+C:\Users\crisp\source\repos\waterskibaan\waterskibaan\obj\Debug\waterskibaan.csprojAssemblyReference.cache
