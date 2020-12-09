@@ -17,6 +17,10 @@ namespace groenschermfrom
     {
         SCardReader cardReader;
         SCardChannel channel;
+        private tijd dates = new tijd();
+        private bracelet braceletCode = new bracelet();
+        private User GetUser = new User();
+
         public scanScherm()
         {
             InitializeComponent();
@@ -28,10 +32,11 @@ namespace groenschermfrom
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            
             panel1.Visible = !panel1.Visible;
-           // bracelet.braceletCode = > apicall <
-           // string name = User.FirstName + " " + User.LastName;
-           // textBox1.Text = name;
+            braceletCode.braceletCode = /*"> apicall <"*/ 0 ;
+            string name = GetUser.FirstName + " " + GetUser.LastName + "\n" + dates.bookingStart + " tot " + dates.bookingEnd;
+            textBox1.Text = name;
         }
         public void getReaders()
         {
