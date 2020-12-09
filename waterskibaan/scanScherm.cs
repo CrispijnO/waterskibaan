@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using SpringCard.PCSC;
 using SpringCard.LibCs;
 using SpringCard.PCSC.CardLibraries;
+using waterskibaan;
 
 namespace groenschermfrom
 {
@@ -90,9 +91,28 @@ namespace groenschermfrom
                 string hexadecimalResult = BitConverter.ToString(rapduB);
                 textBox1.Text = hexadecimalResult;
 
+                switch (hexadecimalResult)
+                {
+                    case "04-BA-B7-82-E0-60-80":
+                        braceletCode.braceletCode = 9032;
+                        break;
+                    case "04-BA-B7-82-E0-60-80----2":
+                        braceletCode.braceletCode = 9033;
+                        break;
+                    default:
+                        textBox1.Text = "Unknown code";
+                        return;
+                }
+
+                RESTClient rClient = new RESTClient();
+                rClient.endPoint = "https://demo.recras.nl/api2/klanten/" + braceletCode.braceletCode;
+                string response = rClient.makeRequest();
+                Console.WriteLine(response);
+
                 channel.Disconnect();
                 channel = null;
                 cardReader.StopMonitor();
+
                 ///SCARD.Connect(SCARD.PCI_RAW(), cardReader, 0x00000003, 0x00000002, Handle, ));
             }
         }
