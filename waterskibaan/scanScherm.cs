@@ -15,7 +15,8 @@ namespace groenschermfrom
 {
     public partial class scanScherm : Form
     {
-
+        SCardReader cardReader;
+        SCardChannel channel;
         public scanScherm()
         {
             InitializeComponent();
@@ -32,8 +33,7 @@ namespace groenschermfrom
            // string name = User.FirstName + " " + User.LastName;
            // textBox1.Text = name;
         }
-
-        private void getReaders()
+        public void getReaders()
         {
 
             try
@@ -43,11 +43,10 @@ namespace groenschermfrom
                 {
                     textBox1.AppendText("Geen readers");
                 }
-                foreach (string reader in readers)
-                {
-                    textBox1.AppendText(reader + " test");
-                }
-                ///SCARD.Connect();
+                cardReader = new SCardReader(0, readers[0]);
+                textBox1.AppendText(cardReader.StatusAsString);
+                cardReader.StartMonitor(onCardChange);
+                ///SCARD.Connect(SCARD.PCI_RAW(), readers[0], 0x00000003, 0x00000002, Handle,);
                 ///SCARD.ListCards();
                 ///SCARD.ListReaders(textBox1.Text);
             }
@@ -57,6 +56,31 @@ namespace groenschermfrom
             }
 
             
+        }
+
+        delegate void onCardChangeInvoker(uint readerState, CardBuffer cardAtr);
+
+        public void onCardChange(uint readerState, CardBuffer cardAtr)
+        {
+            if (InvokeRequired)
+            {
+                this.BeginInvoke(new onCardChangeInvoker(onCardChange), readerState, cardAtr);
+                return;
+            }
+            channel = new SCardChannel(cardReader);
+            if(channel.Connect())
+            {
+                textBox1.Text = "Success";
+            }
+            CAPDU capdu = new CAPDU(0x00, 0x00, 0x00, 0x00);
+            
+            channel.Transmit(capdu);
+            RAPDU rapdu = channel.Transmit(capdu);
+            Console.WriteLine(rapdu);
+
+            
+            //textBox1.Text = rapdu.ToString();
+            ///SCARD.Connect(SCARD.PCI_RAW(), cardReader, 0x00000003, 0x00000002, Handle, ));
         }
     }
 }
