@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace groenschermfrom
 {
-       public static class bracelet
+       public class bracelet
     {
-        public static int braceletCode { get; set; }
+        public int braceletCode { get; set; }
     }
 }

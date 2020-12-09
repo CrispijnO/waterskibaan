@@ -15,6 +15,9 @@ namespace groenschermfrom
 {
     public partial class scanScherm : Form
     {
+        private tijd dates = new tijd();
+        private bracelet braceletCode = new bracelet();
+        private User GetUser = new User();
 
         public scanScherm()
         {
@@ -27,10 +30,11 @@ namespace groenschermfrom
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            
             panel1.Visible = !panel1.Visible;
-           // bracelet.braceletCode = > apicall <
-           // string name = User.FirstName + " " + User.LastName;
-           // textBox1.Text = name;
+            braceletCode.braceletCode = /*"> apicall <"*/ 0 ;
+            string name = GetUser.FirstName + " " + GetUser.LastName + "\n" + dates.bookingStart + " tot " + dates.bookingEnd;
+            textBox1.Text = name;
         }
 
         private void getReaders()
@@ -38,8 +42,6 @@ namespace groenschermfrom
 
             try
             {
-                textBox1.AppendText("test");
-
                 string[] readers = SCARD.Readers;
                 if (readers.Length == 0)
                 {
@@ -47,20 +49,18 @@ namespace groenschermfrom
                 }
                 foreach (string reader in readers)
                 {
-                    textBox1.AppendText(reader + " yes");
+                    textBox1.AppendText(reader + " test");
                 }
+                ///SCARD.Connect();
+                ///SCARD.ListCards();
+                ///SCARD.ListReaders(textBox1.Text);
             }
             catch (Exception)
             {
-                textBox1.AppendText("Error");
+                textBox1.AppendText(SCARD.ErrorToMessage(0));
             }
 
-            ///SCARD.Connect();
-        }
-
-        private void roundPictureBox1_Click(object sender, EventArgs e)
-        {
-
+            
         }
     }
 }
