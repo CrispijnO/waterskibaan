@@ -44,8 +44,6 @@ namespace groenschermfrom
             {
                 contentString += $"{item.id} : {item.klant_id} : {item.datum}\n";
             }
-
-            richTextBox1.Text = contentString;
         }
     }
 }
