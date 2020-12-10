@@ -31,10 +31,10 @@ namespace groenschermfrom
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.nameOutput = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.GroenPanel = new System.Windows.Forms.Panel();
             this.labelTime = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.GroenPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -42,56 +42,58 @@ namespace groenschermfrom
             // 
             this.nameOutput.BackColor = System.Drawing.Color.Snow;
             this.nameOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameOutput.Location = new System.Drawing.Point(106, 54);
-            this.nameOutput.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.nameOutput.Location = new System.Drawing.Point(141, 66);
             this.nameOutput.Name = "nameOutput";
-            this.nameOutput.Size = new System.Drawing.Size(359, 24);
+            this.nameOutput.Size = new System.Drawing.Size(479, 30);
             this.nameOutput.TabIndex = 2;
             this.nameOutput.EnabledChanged += new System.EventHandler(this.pictureBox1_Click);
             this.nameOutput.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // panel1
+            // GroenPanel
             // 
-            this.panel1.Controls.Add(this.labelTime);
-            this.panel1.Controls.Add(this.nameOutput);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(1, -4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(601, 374);
-            this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.GroenPanel.Controls.Add(this.labelTime);
+            this.GroenPanel.Controls.Add(this.nameOutput);
+            this.GroenPanel.Controls.Add(this.pictureBox1);
+            this.GroenPanel.Location = new System.Drawing.Point(1, -5);
+            this.GroenPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GroenPanel.Name = "GroenPanel";
+            this.GroenPanel.Size = new System.Drawing.Size(801, 460);
+            this.GroenPanel.TabIndex = 0;
+            this.GroenPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // labelTime
+            // 
+            this.labelTime.BackColor = System.Drawing.Color.Lime;
+            this.labelTime.Location = new System.Drawing.Point(172, 113);
+            this.labelTime.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelTime.Name = "labelTime";
+            this.labelTime.Size = new System.Drawing.Size(417, 28);
+            this.labelTime.TabIndex = 3;
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(-6, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(-8, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(604, 371);
+            this.pictureBox1.Size = new System.Drawing.Size(805, 457);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // labelTime
-            // 
-            this.labelTime.BackColor = System.Drawing.Color.Lime;
-            this.labelTime.Location = new System.Drawing.Point(129, 92);
-            this.labelTime.Name = "labelTime";
-            this.labelTime.Size = new System.Drawing.Size(313, 23);
-            this.labelTime.TabIndex = 3;
-            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 366);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.GroenPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.panel1.ResumeLayout(false);
+            this.GroenPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -99,7 +101,7 @@ namespace groenschermfrom
 
         #endregion
         private System.Windows.Forms.Label nameOutput;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel GroenPanel;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label labelTime;
     }

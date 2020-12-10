@@ -30,13 +30,23 @@ namespace groenschermfrom
         private void Form1_Load(object sender, EventArgs e)
         {
             getReaders();
+            GroenPanel.Visible = false;
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            int timeLeft = tijd.get_time_left();
             
+            if (GroenPanel.Visible == false)
+            {
+                GroenPanel.Visible = true;
+            } else if(GroenPanel.Visible == true){
+                 GroenPanel.Visible = false;
+            };
             panel1.Visible = !panel1.Visible;
             braceletCode.braceletCode = /*"> apicall <"*/ 0 ;
             string name = GetUser.FirstName + " " + GetUser.LastName + "\n" + dates.bookingStart + " tot " + dates.bookingEnd;
+            nameOutput.Text = "Welkom " + GetUser.FirstName + " " + GetUser.LastName;
+            labelTime.Text = "time left: " + timeLeft.ToString() + " min";
             textBox1.Text = name;
         }
         public void getReaders()

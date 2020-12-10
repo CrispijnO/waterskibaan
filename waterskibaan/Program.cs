@@ -16,7 +16,7 @@ namespace groenschermfrom
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new roodScherm());
+            Application.Run(new scanScherm());
         }
     }
 }
