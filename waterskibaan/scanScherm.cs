@@ -20,8 +20,7 @@ namespace groenschermfrom
         SCardChannel channel;
         private tijd dates = new tijd();
         private bracelet braceletCode = new bracelet();
-        private User GetUser = new User();
-
+        private User GetUser = new User();       
         public scanScherm()
         {
             InitializeComponent();
@@ -31,24 +30,42 @@ namespace groenschermfrom
         {
             getReaders();
             GroenPanel.Visible = false;
+            roodPanel.Visible = false;
+            panel1.Visible = true;
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            int timeLeft = tijd.get_time_left();
             
+            
+            
+            int timeLeft = tijd.get_time_left();
+            if(errorCheck.Checked == true) { 
+            if (roodPanel.Visible == false)
+            {
+                roodPanel.Visible = true;
+            }
+            else if (roodPanel.Visible == true)
+            {
+                roodPanel.Visible = false;
+            }
+            } else { 
             if (GroenPanel.Visible == false)
             {
                 GroenPanel.Visible = true;
             } else if(GroenPanel.Visible == true){
                  GroenPanel.Visible = false;
+            }
             };
-            panel1.Visible = !panel1.Visible;
+            
+
             braceletCode.braceletCode = /*"> apicall <"*/ 0 ;
             string name = GetUser.FirstName + " " + GetUser.LastName + "\n" + dates.bookingStart + " tot " + dates.bookingEnd;
             nameOutput.Text = "Welkom " + GetUser.FirstName + " " + GetUser.LastName;
             labelTime.Text = "time left: " + timeLeft.ToString() + " min";
             textBox1.Text = name;
+
         }
+        
         public void getReaders()
         {
 
@@ -126,5 +143,16 @@ namespace groenschermfrom
                 ///SCARD.Connect(SCARD.PCI_RAW(), cardReader, 0x00000003, 0x00000002, Handle, ));
             }
         }
+
+        private void errorButton_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void errorButton_CheckedChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
