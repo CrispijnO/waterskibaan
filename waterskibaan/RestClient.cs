@@ -34,7 +34,7 @@ namespace waterskibaan
 
             request.Method = httpMethod.ToString();
             request.Host = "demo.recras.nl";
-            request.Headers.Add("Authorization", "Bearer cu4u6-DIs0CiFKp-uHqTPESw8NHWycml");
+            request.Headers.Add("Authorization", "Bearer EP4h24TpYU1leneCBHOaIWTAwrsvcS2s");
             HttpWebResponse response = null;
 
             try
