@@ -8,8 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SpringCard.PCSC;
-using SpringCard.LibCs;
-using SpringCard.PCSC.CardLibraries;
 using waterskibaan;
 
 namespace groenschermfrom
@@ -132,7 +130,7 @@ namespace groenschermfrom
                 }
 
                 RESTClient rClient = new RESTClient();
-                rClient.endPoint = "https://demo.recras.nl/api2/klanten/" + braceletCode.braceletCode;
+                rClient.endPoint = "https://demo.recras.nl/api2/boekingen/" + braceletCode.braceletCode;
                 string response = rClient.makeRequest();
                 Console.WriteLine(response);
 
