@@ -11,9 +11,15 @@ using SpringCard.PCSC;
 using waterskibaan;
 
 namespace groenschermfrom
-{
+{   
+
     public partial class scanScherm : Form
     {
+        /// jsonDeserialize
+        ///{
+        ///    public TimeSpan AfsrpaakTijd { get; set; }
+        ///}
+
         SCardReader cardReader;
         SCardChannel channel;
         private tijd dates = new tijd();
@@ -130,7 +136,7 @@ namespace groenschermfrom
                 }
 
                 RESTClient rClient = new RESTClient();
-                rClient.endPoint = "https://demo.recras.nl/api2/boekingen/" + braceletCode.braceletCode;
+                rClient.endPoint = "https://demo.recras.nl/api2/klanten/" + braceletCode.braceletCode;
                 string response = rClient.makeRequest();
                 Console.WriteLine(response);
 
