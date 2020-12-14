@@ -8,14 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SpringCard.PCSC;
-using SpringCard.LibCs;
-using SpringCard.PCSC.CardLibraries;
 using waterskibaan;
 
 namespace groenschermfrom
-{
+{   
+
     public partial class scanScherm : Form
     {
+        /// jsonDeserialize
+        ///{
+        ///    public TimeSpan AfsrpaakTijd { get; set; }
+        ///}
+
         SCardReader cardReader;
         SCardChannel channel;
         private tijd dates = new tijd();
