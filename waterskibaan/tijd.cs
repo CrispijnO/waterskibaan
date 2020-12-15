@@ -14,15 +14,18 @@ namespace groenschermfrom
        
         public void timer()
         {
-            DateTime dateNow = DateTime.Now;
+           /* DateTime dateNow = DateTime.Now;
             DateTime dateThen = dateNow.AddHours(1);
             bookingStart = dateNow;
             bookingEnd = dateThen;
+           */
         }
         public static int get_time_left() 
         {
-            DateTime dateNow = DateTime.Now;
-            DateTime dateThen = dateNow.AddHours(1);
+            
+            DateTime dateNow = new DateTime(2020, 12, 15, 11, 00, 0);
+            DateTime dateOnPoint = DateTime.Now;
+            DateTime dateThen = dateOnPoint.AddHours(1);
             int timeLeft = 0;
             if (dateThen != dateNow.AddHours(1))
             {
