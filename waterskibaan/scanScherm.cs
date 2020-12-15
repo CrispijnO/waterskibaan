@@ -9,16 +9,18 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SpringCard.PCSC;
 using waterskibaan;
+using Newtonsoft.Json;
 
 namespace groenschermfrom
 {   
 
     public partial class scanScherm : Form
     {
-        /// jsonDeserialize
-        ///{
-        ///    public TimeSpan AfsrpaakTijd { get; set; }
-        ///}
+        class jsonDeserialize
+        {
+            public int id { get; set; }
+            public int klant_id { get; set; }
+        }
 
         SCardReader cardReader;
         SCardChannel channel;
@@ -67,7 +69,10 @@ namespace groenschermfrom
             nameOutput.Text = "Welkom " + GetUser.FirstName + " " + GetUser.LastName;
             labelTime.Text = "time left: " + timeLeft.ToString() + " min";
             textBox1.Text = name;
-
+            RESTClient rClient = new RESTClient();
+            rClient.endPoint = "https://demo.recras.nl/api2/contacten/9034/afbeelding";
+            string response = rClient.makeRequest();
+            Console.WriteLine(response);
         }
         
         public void getReaders()
@@ -125,13 +130,14 @@ namespace groenschermfrom
                 switch (hexadecimalResult)
                 {
                     case "04-BA-B7-82-E0-60-80":
-                        braceletCode.braceletCode = 9032;
+                        braceletCode.braceletCode = 8417;
                         break;
                     case "04-BA-B7-82-E0-60-80----2":
                         braceletCode.braceletCode = 9033;
                         break;
                     default:
                         textBox1.Text = "Unknown code";
+                        Console.WriteLine(hexadecimalResult);
                         return;
                 }
 
@@ -139,6 +145,16 @@ namespace groenschermfrom
                 rClient.endPoint = "https://demo.recras.nl/api2/klanten/" + braceletCode.braceletCode;
                 string response = rClient.makeRequest();
                 Console.WriteLine(response);
+                ///rClient.endPoint = "https://demo.recras.nl/api2/boekingen";
+                ///string boekingen = rClient.makeRequest();
+                ///List<jsonDeserialize> boekinenDeser = JsonConvert.DeserializeObject<List<jsonDeserialize>>(boekingen);
+                ///foreach(var item in boekinenDeser)
+                ///{
+                ///    if(item.klant_id == braceletCode.braceletCode)
+                ////   {
+                ///        Console.WriteLine(item.id + " " + item.klant_id);
+                ///    }
+                ///}                
 
                 channel.Disconnect();
                 channel = null;
