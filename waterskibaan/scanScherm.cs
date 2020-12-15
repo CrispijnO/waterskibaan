@@ -69,7 +69,10 @@ namespace groenschermfrom
             nameOutput.Text = "Welkom " + GetUser.FirstName + " " + GetUser.LastName;
             labelTime.Text = "time left: " + timeLeft.ToString() + " min";
             textBox1.Text = name;
-
+            RESTClient rClient = new RESTClient();
+            rClient.endPoint = "https://demo.recras.nl/api2/contacten/9034/afbeelding";
+            string response = rClient.makeRequest();
+            Console.WriteLine(response);
         }
         
         public void getReaders()
