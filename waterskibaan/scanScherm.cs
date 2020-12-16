@@ -41,10 +41,10 @@ namespace groenschermfrom
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            
-            
-            int timeLeft = tijd.get_time_left();
+
+            testTHIS();
+
+            /*int timeLeft = tijd.get_time_left();
             if(errorCheck.Checked == true) { 
             if (roodPanel.Visible == false)
             {
@@ -64,7 +64,7 @@ namespace groenschermfrom
             };
             
 
-            braceletCode.braceletCode = /*"> apicall <"*/ 0 ;
+            braceletCode.braceletCode =  0 ;
             string name = GetUser.FirstName + " " + GetUser.LastName + "\n" + dates.bookingStart + " tot " + dates.bookingEnd;
             nameOutput.Text = "Welkom " + GetUser.FirstName + " " + GetUser.LastName;
             labelTime.Text = "time left: " + timeLeft.ToString() + " min";
@@ -72,7 +72,7 @@ namespace groenschermfrom
             RESTClient rClient = new RESTClient();
             rClient.endPoint = "https://demo.recras.nl/api2/contacten/9034/afbeelding";
             string response = rClient.makeRequest();
-            Console.WriteLine(response);
+            Console.WriteLine(response);*/
         }
         
         public void getReaders()
@@ -133,28 +133,22 @@ namespace groenschermfrom
                         braceletCode.braceletCode = 8417;
                         break;
                     case "04-BA-B7-82-E0-60-80----2":
-                        braceletCode.braceletCode = 9033;
+                        braceletCode.braceletCode = 51;
                         break;
                     default:
                         textBox1.Text = "Unknown code";
                         Console.WriteLine(hexadecimalResult);
                         return;
                 }
-
+                string response = string.Empty;
                 RESTClient rClient = new RESTClient();
                 rClient.endPoint = "https://demo.recras.nl/api2/klanten/" + braceletCode.braceletCode;
-                string response = rClient.makeRequest();
-                Console.WriteLine(response);
-                ///rClient.endPoint = "https://demo.recras.nl/api2/boekingen";
-                ///string boekingen = rClient.makeRequest();
-                ///List<jsonDeserialize> boekinenDeser = JsonConvert.DeserializeObject<List<jsonDeserialize>>(boekingen);
-                ///foreach(var item in boekinenDeser)
-                ///{
-                ///    if(item.klant_id == braceletCode.braceletCode)
-                ////   {
-                ///        Console.WriteLine(item.id + " " + item.klant_id);
-                ///    }
-                ///}                
+                response = rClient.makeRequest();
+                klanten responseKlant = JsonConvert.DeserializeObject<klanten>(response);
+                rClient.endPoint = "https://demo.recras.nl/api2/boekingen?klant.id=" + braceletCode.braceletCode;
+                response = rClient.makeRequest();
+                boekingen responseBoeking = JsonConvert.DeserializeObject<boekingen>(response);
+
 
                 channel.Disconnect();
                 channel = null;
@@ -163,7 +157,135 @@ namespace groenschermfrom
                 ///SCARD.Connect(SCARD.PCI_RAW(), cardReader, 0x00000003, 0x00000002, Handle, ));
             }
         }
+        private void testTHIS()
+        {
+            string log = string.Empty;
+            Console.WriteLine("GETTING EXECUTED.");
+            string braceletCode = "8417";
+            string response = string.Empty;
+            RESTClient rClient = new RESTClient();
+            rClient.endPoint = "https://demo.recras.nl/api2/klanten/51";
+            response = rClient.makeRequest();
+            klanten responseKlant = JsonConvert.DeserializeObject<klanten>(response);
+            rClient.endPoint = "https://demo.recras.nl/api2/boekingen?klant.id=51&embed=boekingsregels";
+            response = rClient.makeRequest();
+            List<boekingen> responseBoeking = JsonConvert.DeserializeObject<List<boekingen>>(response);
+            Console.WriteLine("Boutta log the output!!");
+            DateTime test2 = new DateTime().AddHours(1);
+            int index = 0;
+            int maxIndex = 1;
+            bool found = false;
+            responseBoeking.ForEach(boeking =>
+            {
+                // setting the maxIndex to the right number.
+                // doing -1 because the index starts at 0 and not 1.
+                maxIndex = boeking.boekingsregels.Count - 1;
+                // the time of now -1 hour.
+                DateTime DateNow = DateTime.Now.AddHours(-1);
+                while (found == false || index < maxIndex)
+                {
+                    var boekingsregelW = boeking.boekingsregels[index];
+                    Console.WriteLine("getting executed. " + boekingsregelW.begin);
+                    if (boekingsregelW.begin <= DateNow)
+                    {
+                        index++;
+                    } else
+                    {
+                        found = true;
+                    }
+                }
+                var boekingsregel = boeking.boekingsregels[index];
+                TimeSpan t = timeLeft(boekingsregel.begin, boekingsregel.eind);
+                if (t.Days > 0 || t.Hours > 1)
+                {
+                    GroenPanel.Visible = true;
+                    roodPanel.Visible = true;
+                } else
+                {
+                    GroenPanel.Visible = true;
+                }
+                string formattedTimeString = formatTime(t);
+                Console.WriteLine(formattedTimeString);
+                // TODO verwisselen van scherm en de vakken in vullen.
 
+
+                ///going over an array for the start / end time.
+                /*boeking.boekingsregels.ForEach(boekingsregel =>
+                {
+                    
+
+
+                    if (boekingsregel.begin > DateNow)
+                    {
+                        TimeSpan t = timeLeft(boekingsregel.begin, boekingsregel.eind);
+                        string pleaseWork = string.Format("{0} Days, {1} Hours, {2} Minutes, {3} Seconds til launch.", t.Days, t.Hours, t.Minutes, t.Seconds);
+                        Console.WriteLine(pleaseWork);
+                    }
+
+                });*/
+            });
+            Console.WriteLine(log);
+        }
+        public TimeSpan timeLeft(DateTime start, DateTime end)
+        {
+            DateTime now = DateTime.Now;
+            Console.WriteLine("[NOW | END] " + now + " | " + end);
+            TimeSpan result = end - now;
+            return result;
+        }
+
+        public string formatTime(TimeSpan time)
+        {
+            string formattedTime = string.Empty;
+            bool days = time.Days > 0;
+            bool hours = time.Hours > 0;
+            bool minutes = time.Minutes > 0;
+            bool seconds = time.Seconds > 0;
+            if (days)
+            {
+                if (time.Days == 1)
+                {
+                    formattedTime += string.Format("{0} Dag, ", time.Days);
+                }
+                else
+                {
+                    formattedTime += string.Format("{0} Dagen, ", time.Days);
+                }
+            }
+            if (days || hours)
+            {
+                if (time.Hours == 1)
+                {
+                    formattedTime += string.Format("{0} Uur, ", time.Hours);
+                }
+                else
+                {
+                    formattedTime += string.Format("{0} Uren, ", time.Hours);
+                }
+            }
+            if (days || hours || minutes)
+            {
+                if (time.Minutes == 1)
+                {
+                    formattedTime += string.Format("{0} Minuut, ", time.Minutes);
+                } else
+                {
+                    formattedTime += string.Format("{0} Minuten, ", time.Minutes);
+                }
+            }
+            if (days || hours || minutes || seconds)
+            {
+                if (time.Seconds == 1)
+                {
+                    formattedTime += string.Format("{0} Seconde", time.Seconds);
+                }
+                else
+                {
+                    formattedTime += string.Format("{0} Secondes", time.Seconds);
+                }
+            }
+            return formattedTime;
+        }
         private void errorButton_CheckedChanged(object sender, EventArgs e)
         {
 

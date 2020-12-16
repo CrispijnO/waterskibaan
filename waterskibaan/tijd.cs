@@ -35,5 +35,12 @@ namespace groenschermfrom
             return timeLeft;
         }
 
+        public int timeLeft(DateTime start, DateTime end)
+        {
+            DateTime now = DateTime.Now;
+            int test = now.CompareTo(end);
+            return test;
+        }
+
     }
 }
