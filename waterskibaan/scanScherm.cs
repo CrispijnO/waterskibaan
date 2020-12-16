@@ -42,7 +42,7 @@ namespace groenschermfrom
         private void button1_Click(object sender, EventArgs e)
         {
 
-            testTHIS();
+            //testTHIS();
 
             /*int timeLeft = tijd.get_time_left();
             if(errorCheck.Checked == true) { 
@@ -149,7 +149,7 @@ namespace groenschermfrom
                 response = rClient.makeRequest();
                 boekingen responseBoeking = JsonConvert.DeserializeObject<boekingen>(response);*/
 
-
+                testTHIS(braceletCode.braceletCode);
                 channel.Disconnect();
                 channel = null;
                 cardReader.StopMonitor();
@@ -157,17 +157,16 @@ namespace groenschermfrom
                 ///SCARD.Connect(SCARD.PCI_RAW(), cardReader, 0x00000003, 0x00000002, Handle, ));
             }
         }
-        private void testTHIS()
+        private void testTHIS(int braceletcode)
         {
             string log = string.Empty;
             Console.WriteLine("GETTING EXECUTED.");
-            string braceletCode = "8417";
             string response = string.Empty;
             RESTClient rClient = new RESTClient();
-            rClient.endPoint = "https://demo.recras.nl/api2/klanten/51";
+            rClient.endPoint = $"https://demo.recras.nl/api2/klanten/{braceletcode}";
             response = rClient.makeRequest();
             klanten responseKlant = JsonConvert.DeserializeObject<klanten>(response);
-            rClient.endPoint = "https://demo.recras.nl/api2/boekingen?klant.id=51&embed=boekingsregels";
+            rClient.endPoint = $"https://demo.recras.nl/api2/boekingen?klant.id={braceletcode}&embed=boekingsregels";
             response = rClient.makeRequest();
             List<boekingen> responseBoeking = JsonConvert.DeserializeObject<List<boekingen>>(response);
             Console.WriteLine("Boutta log the output!!");
