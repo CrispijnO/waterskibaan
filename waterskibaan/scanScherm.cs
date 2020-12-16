@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Timers;
+using System.Configuration;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -38,33 +40,71 @@ namespace groenschermfrom
             GroenPanel.Visible = false;
             roodPanel.Visible = false;
             panel1.Visible = true;
+            SetTimer();
+
+            myTimer.Stop();
+            myTimer.Dispose();
         }
-        private void button1_Click(object sender, EventArgs e)
+        #region Timer
+
+        private static System.Timers.Timer myTimer;
+
+        private void SetTimer()
         {
+            #region Bij variabele instellingen
 
-            //testTHIS();
+            // Haal de timer interval uit de AppSettings.
+            string timerIntervalString = ConfigurationManager.AppSettings["IntervalMili"];
 
-            /*int timeLeft = tijd.get_time_left();
-            if(errorCheck.Checked == true) { 
-            if (roodPanel.Visible == false)
+            // Zet de timerIntervalString om naar een integer waarde (die hebben we nodig voor de timer).
+            int timerInterval = int.Parse(timerIntervalString);
+
+            #endregion
+
+            // Maak een timer aan met een interval (2 seconden).
+            myTimer = new System.Timers.Timer(timerInterval);
+
+            // Verbind de timer met de 'OnTimedEvent' methode. 
+
+            myTimer.Elapsed += OnTimedEvent;
+
+            myTimer.AutoReset = true;
+            myTimer.Enabled = true;
+        }
+        private void OnTimedEvent(Object source, ElapsedEventArgs e)
+        {
+            IntervalClick();
+
+        }
+
+        private void IntervalClick()
+        {
+            int timeLeft = tijd.get_time_left();
+            if (errorCheck.Checked == true)
             {
-                roodPanel.Visible = true;
+                if (roodPanel.Visible == false)
+                {
+                    roodPanel.Visible = true;
+                }
+                else if (roodPanel.Visible == true)
+                {
+                    roodPanel.Visible = false;
+                }
             }
-            else if (roodPanel.Visible == true)
+            else
             {
-                roodPanel.Visible = false;
-            }
-            } else { 
-            if (GroenPanel.Visible == false)
-            {
-                GroenPanel.Visible = true;
-            } else if(GroenPanel.Visible == true){
-                 GroenPanel.Visible = false;
-            }
+                if (GroenPanel.Visible == false)
+                {
+                    GroenPanel.Visible = true;
+                }
+                else if (GroenPanel.Visible == true)
+                {
+                    GroenPanel.Visible = false;
+                }
             };
-            
 
-            braceletCode.braceletCode =  0 ;
+
+            braceletCode.braceletCode = /*"> apicall <"*/ 0;
             string name = GetUser.FirstName + " " + GetUser.LastName + "\n" + dates.bookingStart + " tot " + dates.bookingEnd;
             nameOutput.Text = "Welkom " + GetUser.FirstName + " " + GetUser.LastName;
             labelTime.Text = "time left: " + timeLeft.ToString() + " min";
@@ -72,9 +112,17 @@ namespace groenschermfrom
             RESTClient rClient = new RESTClient();
             rClient.endPoint = "https://demo.recras.nl/api2/contacten/9034/afbeelding";
             string response = rClient.makeRequest();
-            Console.WriteLine(response);*/
+            Console.WriteLine(response);
         }
-        
+
+        #endregion
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            IntervalClick();
+
+        }
+
         public void getReaders()
         {
 
