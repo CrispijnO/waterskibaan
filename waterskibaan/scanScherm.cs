@@ -127,16 +127,25 @@ namespace groenschermfrom
                 string hexadecimalResult = BitConverter.ToString(rapduB);
                 textBox1.Text = hexadecimalResult;
 
+                if (hexadecimalResult == "04-BA-B7-82-E0-60-80")
+                {
+                    Image img = Image.FromFile(@"C:\Users\milan\source\repos\waterskibaan\waterskibaan\images\9A-91 wallpaper1.jpg");
+                    profileImage.Image = img;
+                }
+
                 switch (hexadecimalResult)
                 {
                     case "04-BA-B7-82-E0-60-80":
-                        braceletCode.braceletCode = 8417;
-                        break;
-                    case "04-BA-B7-82-E0-60-80----2":
                         braceletCode.braceletCode = 51;
                         break;
+                    case "04-31-BF-5A-91-5B-80":
+                        braceletCode.braceletCode = 110;
+                        break;
+                    case "04-17-BD-5A-91-5B-80":
+                        braceletCode.braceletCode = 101;
+                        break;
                     default:
-                        textBox1.Text = "Unknown code";
+                       // textBox1.Text = "Unknown code";
                         Console.WriteLine(hexadecimalResult);
                         return;
                 }
