@@ -140,14 +140,14 @@ namespace groenschermfrom
                         Console.WriteLine(hexadecimalResult);
                         return;
                 }
-                string response = string.Empty;
+                /*string response = string.Empty;
                 RESTClient rClient = new RESTClient();
                 rClient.endPoint = "https://demo.recras.nl/api2/klanten/" + braceletCode.braceletCode;
                 response = rClient.makeRequest();
                 klanten responseKlant = JsonConvert.DeserializeObject<klanten>(response);
                 rClient.endPoint = "https://demo.recras.nl/api2/boekingen?klant.id=" + braceletCode.braceletCode;
                 response = rClient.makeRequest();
-                boekingen responseBoeking = JsonConvert.DeserializeObject<boekingen>(response);
+                boekingen responseBoeking = JsonConvert.DeserializeObject<boekingen>(response);*/
 
 
                 channel.Disconnect();
