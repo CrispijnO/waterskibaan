@@ -150,7 +150,7 @@ namespace groenschermfrom
             this.profileImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.profileImage.TabIndex = 2;
             this.profileImage.TabStop = false;
-            this.profileImage.Click += new System.EventHandler(this.profileImage_Click);
+            //this.profileImage.Click += new System.EventHandler(this.profileImage_Click); ?? error?
             // 
             // richTextBox2
             // 
