@@ -34,6 +34,7 @@ namespace groenschermfrom
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.roundPictureBox1 = new RoundPictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.roodPanel = new System.Windows.Forms.Panel();
@@ -45,16 +46,14 @@ namespace groenschermfrom
             this.labelTime = new System.Windows.Forms.Label();
             this.nameOutput = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.errorCheck = new System.Windows.Forms.CheckBox();
-            this.roundPictureBox1 = new RoundPictureBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.roundPictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.roodPanel.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profileImage)).BeginInit();
             this.GroenPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.roundPictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -94,6 +93,17 @@ namespace groenschermfrom
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(200, 20);
             this.textBox1.TabIndex = 6;
+            // 
+            // roundPictureBox1
+            // 
+            this.roundPictureBox1.BackColor = System.Drawing.Color.DarkGray;
+            this.roundPictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("roundPictureBox1.Image")));
+            this.roundPictureBox1.Location = new System.Drawing.Point(-47, 126);
+            this.roundPictureBox1.Name = "roundPictureBox1";
+            this.roundPictureBox1.Size = new System.Drawing.Size(267, 277);
+            this.roundPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.roundPictureBox1.TabIndex = 5;
+            this.roundPictureBox1.TabStop = false;
             // 
             // label1
             // 
@@ -150,7 +160,6 @@ namespace groenschermfrom
             this.profileImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.profileImage.TabIndex = 2;
             this.profileImage.TabStop = false;
-            //this.profileImage.Click += new System.EventHandler(this.profileImage_Click); ?? error?
             // 
             // richTextBox2
             // 
@@ -213,36 +222,12 @@ namespace groenschermfrom
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             // 
-            // errorCheck
-            // 
-            this.errorCheck.AutoSize = true;
-            this.errorCheck.Location = new System.Drawing.Point(494, 398);
-            this.errorCheck.Margin = new System.Windows.Forms.Padding(2);
-            this.errorCheck.Name = "errorCheck";
-            this.errorCheck.Size = new System.Drawing.Size(133, 17);
-            this.errorCheck.TabIndex = 6;
-            this.errorCheck.Text = "error? (checked is yes)";
-            this.errorCheck.UseVisualStyleBackColor = true;
-            this.errorCheck.CheckedChanged += new System.EventHandler(this.errorButton_CheckedChanged_1);
-            // 
-            // roundPictureBox1
-            // 
-            this.roundPictureBox1.BackColor = System.Drawing.Color.DarkGray;
-            this.roundPictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("roundPictureBox1.Image")));
-            this.roundPictureBox1.Location = new System.Drawing.Point(-47, 126);
-            this.roundPictureBox1.Name = "roundPictureBox1";
-            this.roundPictureBox1.Size = new System.Drawing.Size(267, 277);
-            this.roundPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.roundPictureBox1.TabIndex = 5;
-            this.roundPictureBox1.TabStop = false;
-            // 
             // scanScherm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(688, 427);
-            this.Controls.Add(this.errorCheck);
             this.Controls.Add(this.GroenPanel);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panel1);
@@ -252,6 +237,7 @@ namespace groenschermfrom
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.roundPictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.roodPanel.ResumeLayout(false);
             this.roodPanel.PerformLayout();
@@ -259,9 +245,7 @@ namespace groenschermfrom
             ((System.ComponentModel.ISupportInitialize)(this.profileImage)).EndInit();
             this.GroenPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.roundPictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -282,7 +266,6 @@ namespace groenschermfrom
         private System.Windows.Forms.PictureBox profileImage;
         private System.Windows.Forms.RichTextBox richTextBox2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.CheckBox errorCheck;
         private System.Windows.Forms.Label label3;
     }
 }

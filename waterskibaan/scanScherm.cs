@@ -36,62 +36,11 @@ namespace groenschermfrom
             GroenPanel.Visible = false;
             roodPanel.Visible = false;
             panel1.Visible = true;
-            //SetTimer();
-
-            /*myTimer.Stop();
-            myTimer.Dispose();*/
         }
-        
-
-        private void IntervalClick()
-        {
-            Console.WriteLine("the timer is active.");
-            int timeLeft = tijd.get_time_left();
-            if (errorCheck.Checked == true)
-            {
-                if (roodPanel.Visible == false)
-                {
-                    roodPanel.Visible = true;
-                }
-                else if (roodPanel.Visible == true)
-                {
-                    roodPanel.Visible = false;
-                }
-            }
-            else
-            {
-                if (GroenPanel.Visible == false)
-                {
-                    GroenPanel.Visible = true;
-                }
-                else if (GroenPanel.Visible == true)
-                {
-                    GroenPanel.Visible = false;
-                }
-            };
-
-
-            /*braceletCode.braceletCode =  0;
-            string name = GetUser.FirstName + " " + GetUser.LastName + "\n" + dates.bookingStart + " tot " + dates.bookingEnd;
-            nameOutput.Text = "Welkom " + GetUser.FirstName + " " + GetUser.LastName;
-            labelTime.Text = "time left: " + timeLeft.ToString() + " min";
-            textBox1.Text = name;
-            RESTClient rClient = new RESTClient();
-            rClient.endPoint = "https://demo.recras.nl/api2/contacten/9034/afbeelding";
-            string response = rClient.makeRequest();
-            Console.WriteLine(response);*/
-        }
-
         
         private async void button1_Click(object sender, EventArgs e)
         {
-            //SetTimer();
-            //IntervalClick();
-            /*IntervalClick();
-            await Task.Delay(3000);
-            IntervalClick();*/
-            //testTHIS(8418);
-            handleApiRequests(56);
+            handleApiRequests(8418);
         }
 
         public void getReaders()
@@ -107,9 +56,6 @@ namespace groenschermfrom
                 cardReader = new SCardReader(0, readers[0]);
                 textBox1.AppendText(cardReader.StatusAsString);
                 cardReader.StartMonitor(onCardChange);
-                ///SCARD.Connect(SCARD.PCI_RAW(), readers[0], 0x00000003, 0x00000002, Handle,);
-                ///SCARD.ListCards();
-                ///SCARD.ListReaders(textBox1.Text);
             }
             catch (Exception)
             {
@@ -146,12 +92,6 @@ namespace groenschermfrom
                 string hexadecimalResult = BitConverter.ToString(rapduB);
                 textBox1.Text = hexadecimalResult;
 
-                if (hexadecimalResult == "04-BA-B7-82-E0-60-80")
-                {
-                    //Image img = Image.FromFile(@"C:\Users\milan\source\repos\waterskibaan\waterskibaan\images\9A-91 wallpaper1.jpg");
-                    //profileImage.Image = img;
-                }
-
                 switch (hexadecimalResult)
                 {
                     case "04-BA-B7-82-E0-60-80":
@@ -171,14 +111,6 @@ namespace groenschermfrom
                         Console.WriteLine(hexadecimalResult);
                         return;
                 }
-                /*string response = string.Empty;
-                RESTClient rClient = new RESTClient();
-                rClient.endPoint = "https://demo.recras.nl/api2/klanten/" + braceletCode.braceletCode;
-                response = rClient.makeRequest();
-                klanten responseKlant = JsonConvert.DeserializeObject<klanten>(response);
-                rClient.endPoint = "https://demo.recras.nl/api2/boekingen?klant.id=" + braceletCode.braceletCode;
-                response = rClient.makeRequest();
-                boekingen responseBoeking = JsonConvert.DeserializeObject<boekingen>(response);*/
 
                 handleApiRequests(braceletCode.braceletCode);
                 channel.Disconnect();
