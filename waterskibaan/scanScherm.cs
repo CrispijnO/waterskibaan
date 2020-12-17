@@ -90,7 +90,7 @@ namespace groenschermfrom
             /*IntervalClick();
             await Task.Delay(3000);
             IntervalClick();*/
-            testTHIS(8418);
+            //testTHIS(8418);
         }
 
         public void getReaders()
@@ -179,7 +179,7 @@ namespace groenschermfrom
                 response = rClient.makeRequest();
                 boekingen responseBoeking = JsonConvert.DeserializeObject<boekingen>(response);*/
 
-                testTHIS(braceletCode.braceletCode);
+                handleApiRequests(braceletCode.braceletCode);
                 channel.Disconnect();
                 channel = null;
                 cardReader.StopMonitor();
@@ -187,7 +187,7 @@ namespace groenschermfrom
                 ///SCARD.Connect(SCARD.PCI_RAW(), cardReader, 0x00000003, 0x00000002, Handle, ));
             }
         }
-        private void testTHIS(int braceletcode)
+        private void handleApiRequests(int braceletcode)
         {
             string response = string.Empty;
             RESTClient rClient = new RESTClient();
