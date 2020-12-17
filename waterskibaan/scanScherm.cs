@@ -91,6 +91,7 @@ namespace groenschermfrom
             await Task.Delay(3000);
             IntervalClick();*/
             //testTHIS(8418);
+            handleApiRequests(56);
         }
 
         public void getReaders()
@@ -147,8 +148,8 @@ namespace groenschermfrom
 
                 if (hexadecimalResult == "04-BA-B7-82-E0-60-80")
                 {
-                    Image img = Image.FromFile(@"C:\Users\milan\source\repos\waterskibaan\waterskibaan\images\9A-91 wallpaper1.jpg");
-                    profileImage.Image = img;
+                    //Image img = Image.FromFile(@"C:\Users\milan\source\repos\waterskibaan\waterskibaan\images\9A-91 wallpaper1.jpg");
+                    //profileImage.Image = img;
                 }
 
                 switch (hexadecimalResult)
@@ -243,10 +244,12 @@ namespace groenschermfrom
                     richTextBox2.Text = $"Hallo {responseKlant.displaynaam},\n\nU heeft op did moment geen boeking.\nUw eerst volgende boeking is: {eerstVolgendeBoeking}";
                     GroenPanel.Visible = true;
                     roodPanel.Visible = true;
+                    profileImage.ImageLocation = "https://i.imgur.com/JNJGSs7.png";
                     await Task.Delay(5000);
                     roodPanel.Visible = false;
                     GroenPanel.Visible = false;
                     richTextBox2.Text = "";
+                    profileImage.ImageLocation = "";
                 } else
                 {
                     nameOutput.Text = $"Hallo {responseKlant.displaynaam}!";
