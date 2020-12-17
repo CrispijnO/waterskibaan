@@ -18,17 +18,13 @@ namespace groenschermfrom
 
     public partial class scanScherm : Form
     {
-        class jsonDeserialize
-        {
-            public int id { get; set; }
-            public int klant_id { get; set; }
-        }
+        
 
         SCardReader cardReader;
         SCardChannel channel;
-        private tijd dates = new tijd();
+
         private bracelet braceletCode = new bracelet();
-        private User GetUser = new User();       
+    
         public scanScherm()
         {
             InitializeComponent();
@@ -40,45 +36,16 @@ namespace groenschermfrom
             GroenPanel.Visible = false;
             roodPanel.Visible = false;
             panel1.Visible = true;
-            SetTimer();
+            //SetTimer();
 
-            myTimer.Stop();
-            myTimer.Dispose();
+            /*myTimer.Stop();
+            myTimer.Dispose();*/
         }
-        #region Timer
-
-        private static System.Timers.Timer myTimer;
-
-        private void SetTimer()
-        {
-            #region Bij variabele instellingen
-
-            // Haal de timer interval uit de AppSettings.
-            string timerIntervalString = ConfigurationManager.AppSettings["IntervalMili"];
-
-            // Zet de timerIntervalString om naar een integer waarde (die hebben we nodig voor de timer).
-            int timerInterval = int.Parse(timerIntervalString);
-
-            #endregion
-
-            // Maak een timer aan met een interval (2 seconden).
-            myTimer = new System.Timers.Timer(timerInterval);
-
-            // Verbind de timer met de 'OnTimedEvent' methode. 
-
-            myTimer.Elapsed += OnTimedEvent;
-
-            myTimer.AutoReset = true;
-            myTimer.Enabled = true;
-        }
-        private void OnTimedEvent(Object source, ElapsedEventArgs e)
-        {
-            IntervalClick();
-
-        }
+        
 
         private void IntervalClick()
         {
+            Console.WriteLine("the timer is active.");
             int timeLeft = tijd.get_time_left();
             if (errorCheck.Checked == true)
             {
@@ -104,7 +71,7 @@ namespace groenschermfrom
             };
 
 
-            braceletCode.braceletCode = /*"> apicall <"*/ 0;
+            /*braceletCode.braceletCode =  0;
             string name = GetUser.FirstName + " " + GetUser.LastName + "\n" + dates.bookingStart + " tot " + dates.bookingEnd;
             nameOutput.Text = "Welkom " + GetUser.FirstName + " " + GetUser.LastName;
             labelTime.Text = "time left: " + timeLeft.ToString() + " min";
@@ -112,15 +79,18 @@ namespace groenschermfrom
             RESTClient rClient = new RESTClient();
             rClient.endPoint = "https://demo.recras.nl/api2/contacten/9034/afbeelding";
             string response = rClient.makeRequest();
-            Console.WriteLine(response);
+            Console.WriteLine(response);*/
         }
 
-        #endregion
-        private void button1_Click(object sender, EventArgs e)
+        
+        private async void button1_Click(object sender, EventArgs e)
         {
-
+            //SetTimer();
+            //IntervalClick();
             IntervalClick();
-
+            await Task.Delay(3000);
+            IntervalClick();
+            testTHIS(8424);
         }
 
         public void getReaders()
@@ -216,8 +186,6 @@ namespace groenschermfrom
         }
         private void testTHIS(int braceletcode)
         {
-            string log = string.Empty;
-            Console.WriteLine("GETTING EXECUTED.");
             string response = string.Empty;
             RESTClient rClient = new RESTClient();
             rClient.endPoint = $"https://demo.recras.nl/api2/klanten/{braceletcode}";
@@ -226,33 +194,41 @@ namespace groenschermfrom
             rClient.endPoint = $"https://demo.recras.nl/api2/boekingen?klant.id={braceletcode}&embed=boekingsregels";
             response = rClient.makeRequest();
             List<boekingen> responseBoeking = JsonConvert.DeserializeObject<List<boekingen>>(response);
-            Console.WriteLine("Boutta log the output!!");
-            DateTime test2 = new DateTime().AddHours(1);
             int index = 0;
-            int maxIndex = 1;
             bool found = false;
+            DateTime DateNow = DateTime.Now;
             responseBoeking.ForEach(boeking =>
             {
-                // setting the maxIndex to the right number.
-                // doing -1 because the index starts at 0 and not 1.
-                maxIndex = boeking.boekingsregels.Count - 1;
-                // the time of now -1 hour.
-                DateTime DateNow = DateTime.Now.AddHours(-1);
-                while (found == false || index < maxIndex)
+                for (int i = 0; i < boeking.boekingsregels.Count - 1; i++)
                 {
-                    var boekingsregelW = boeking.boekingsregels[index];
-                    Console.WriteLine("getting executed. " + boekingsregelW.begin);
-                    if (boekingsregelW.begin <= DateNow)
+                    var boekingsregelW = boeking.boekingsregels[i];
+                    
+                    // begin tijd moet al geweest zijn en de eind tijd moet nog komen.
+                    if (boekingsregelW.begin < DateNow && boekingsregelW.eind > DateNow)
                     {
-                        index++;
-                    } else
-                    {
+                        index = i;
                         found = true;
+                        break;
+                    }
+                }
+                if (found)
+                {
+                    for (int i = 0; i < boeking.boekingsregels.Count - 1; i++)
+                    {
+                        var boekingsregelW = boeking.boekingsregels[i];
+                        // looping over elke boekingsregel en kijken welke boeking het eerst aan de beurt is.
+                        // ook checken of het niet al geweest is.
+                        DateTime eerstVolgendeBoeking = DateTime.Now;
+                        if (boekingsregelW.begin > eerstVolgendeBoeking)
+                        {
+
+                        }
                     }
                 }
                 var boekingsregel = boeking.boekingsregels[index];
                 TimeSpan t = timeLeft(boekingsregel.begin, boekingsregel.eind);
-                if (t.Days > 0 || t.Hours > 1)
+                Console.WriteLine("Hours: " + t.Hours);
+                if (t.Minutes < 1)
                 {
                     GroenPanel.Visible = true;
                     roodPanel.Visible = true;
@@ -262,25 +238,7 @@ namespace groenschermfrom
                 }
                 string formattedTimeString = formatTime(t);
                 Console.WriteLine(formattedTimeString);
-                // TODO verwisselen van scherm en de vakken in vullen.
-
-
-                ///going over an array for the start / end time.
-                /*boeking.boekingsregels.ForEach(boekingsregel =>
-                {
-                    
-
-
-                    if (boekingsregel.begin > DateNow)
-                    {
-                        TimeSpan t = timeLeft(boekingsregel.begin, boekingsregel.eind);
-                        string pleaseWork = string.Format("{0} Days, {1} Hours, {2} Minutes, {3} Seconds til launch.", t.Days, t.Hours, t.Minutes, t.Seconds);
-                        Console.WriteLine(pleaseWork);
-                    }
-
-                });*/
             });
-            Console.WriteLine(log);
         }
         public TimeSpan timeLeft(DateTime start, DateTime end)
         {
